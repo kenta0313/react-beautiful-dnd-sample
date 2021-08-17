@@ -1,8 +1,17 @@
 import type { NextPage } from 'next'
 import { CHARACTERS } from './caractersData'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { useState } from 'react';
 
 const Home: NextPage = () => {
+  const [characters, updateCharacters] = useState(CHARACTERS);
+  function handleOnDragEnd(result: any) {
+    const items = Array.from(characters);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    updateCharacters(items);
+  }
   return (
     <div>
       <h1>react-beautiful-dnd-sample</h1>
