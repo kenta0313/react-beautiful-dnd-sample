@@ -15,7 +15,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <h1>react-beautiful-dnd-sample</h1>
-      <DragDropContext>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
         <Droppable droppableId="characters">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
